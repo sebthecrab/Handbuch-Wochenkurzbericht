@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Handbuch — Wochen Kurzbericht (DGUV-Prüfungen)</title>
+  <style>
+    :root{--bg:#f7f9fc;--card:#ffffff;--muted:#6b7280;--accent:#0f62fe}
+    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg);color:#0b1220}
+    .wrapper{max-width:980px;margin:32px auto;padding:24px}
+    header{display:flex;gap:16px;align-items:center;margin-bottom:18px}
+    header h1{font-size:20px;margin:0}
+    header p{margin:0;color:var(--muted)}
+    .card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 6px 20px rgba(11,18,32,0.06);margin-bottom:18px}
+    h2{margin-top:0}
+    .toc ul{padding-left:18px}
+    code{background:#f1f5f9;padding:2px 6px;border-radius:6px;font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace}
+    pre{background:#0b1220;color:#e6eef8;padding:12px;border-radius:8px;overflow:auto}
+    .btn{display:inline-block;padding:8px 12px;border-radius:8px;text-decoration:none;background:var(--accent);color:white;font-weight:600}
+    .muted{color:var(--muted)}
+    table{width:100%;border-collapse:collapse;margin:10px 0}
+    th,td{padding:8px;border:1px solid #eef2f7;text-align:left}
+    footer{font-size:13px;color:var(--muted);text-align:center;margin-top:8px}
+    /* print-friendly */
+    @media print{body{background:white} .wrapper{box-shadow:none} .btn, .no-print{display:none}}
+    .note{background:#fff8e6;border-left:4px solid #ffd166;padding:10px;border-radius:6px}
+    .danger{background:#fff0f1;border-left:4px solid #ff6b6b;padding:10px;border-radius:6px}
+    .copy-area{display:flex;gap:8px;align-items:flex-start}
+    textarea{width:100%;min-height:120px;padding:8px;border-radius:8px;border:1px solid #e6eef8;font-family:inherit}
+    .kbd{background:#0b1220;color:#fff;padding:2px 6px;border-radius:6px;font-size:12px}
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <div>
+        <h1>Handbuch — <strong>Wochen Kurzbericht</strong> (DGUV‑Prüfungen)</h1>
+        <p class="muted">Vollständiges HTML‑Handbuch zur Verwendung des Tools „Wochen Kurzbericht“</p>
+      </div>
+      <div style="margin-left:auto;text-align:right">
+        <a class="btn no-print" onclick="window.print()" href="#" role="button">Als PDF drucken</a>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>Inhalt</h2>
+      <div class="toc">
+        <ul>
+          <li>Kurzbeschreibung des Tools</li>
+          <li>Bedienungsanleitung
+            <ul>
+              <li>Navigation</li>
+              <li>Cookie‑Einstellungen</li>
+            </ul>
+          </li>
+          <li>Kunden &amp; Personen erfassen</li>
+          <li>Daten speichern</li>
+          <li>Report erstellen &amp; Ausgabe</li>
+          <li>Hinweise &amp; Tipps</li>
+          <li>Anhang: 
+            <ul>
+               <li>Rechtlicher Cookie‑Hinweis</li>
+               <li>FAQ</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>1. Kurzbeschreibung des Tools</h2>
+      <p>
+        <strong>Wochen Kurzbericht</strong> ist eine schlanke Webanwendung zur Erfassung und Auswertung von <strong>DGUV‑Prüfungen an elektrischen Geräten</strong>.
+        Das Ziel ist die Ermittlung der relevanten Kennzahlen (Prüfungsanzahl, nicht bestandene Prüfungen, Fehlerquote) und die einfache Übergabe dieser Daten an den Disponenten.
+      </p>
+
+      <p>Wichtige Einsatzszenarien:</p>
+      <ul>
+        <li>Erstellen von <strong>Zwischenberichten</strong> für einzelne Kunden, wenn in einer Woche mehrere Kunden bedient wurden.</li>
+        <li>Erstellen von <strong>Mehrwochenberichten</strong> für einzelne Kunden, wenn der Einsatz über mehrere Wochen läuft.</li>
+        <li>Erzeugen eines <strong>Wochenberichts</strong> (Hauptfunktion) mit allen Prüfdaten der aktuellen KW für die Übergabe an den Disponenten.</li>
+      </ul>
+
+      <p class="note"><strong>Nutzen:</strong> Die Anwendung berechnet die <strong>Fehlerquote</strong> für DGUV‑Prüfungen. Ab einer Fehlerquote von <strong>2%</strong> ist der Prüfintervall zu verkürzen — die Zahlen sind also kritisch für Planung und Compliance.
+        Zusätzlich unterstützt das Tool die Ermittlung der <em>Bonusstufe</em> (abhängig von Anzahl/Qualität der Prüfungen pro Teammitglied) und damit, ab wann Mitarbeiter am Donnerstag die Heimreise antreten können.</p>
+
+      <p>Berichtsformen sind als <strong>Reintext</strong> kopierbar (z. B. für E‑Mail oder WhatsApp) und lassen sich als <strong>PDF</strong> drucken/exportieren.</p>
+    </section>
+
+    <section class="card">
+      <h2>2. Bedienungsanleitung</h2>
+
+      <h3>2.1 Navigation</h3>
+      <p>
+        Beim Aufruf der App wird standardmäßig die <strong>aktuelle Kalenderwoche (KW)</strong> angezeigt. Über die UI‑Buttons <code>← Vorherige KW</code> und <code>Nächste KW →</code> blättern Sie in benachbarte Kalenderwochen.
+        In jeder Woche können Sie Daten <em>anlegen</em>, <em>bearbeiten</em> oder <em>löschen</em>.
+      </p>
+      <p class="muted">Hinweis: Beim Neu‑Laden der Seite springt die Anzeige automatisch wieder zur aktuellen KW.</p>
+
+      <h3>2.2 Cookie‑Einstellungen (lokale Speicherung)</h3>
+      <p>
+        Die Anwendung speichert alle Daten <strong>lokal auf dem Gerät</strong>, von dem die Anwendung geöffnet wurde. Es existiert <strong>keine</strong> Speicherung auf einem Webserver oder in einer zentralen Datenbank.
+      </p>
+      <ul>
+        <li>Aktivierbare Cookie‑Optionen legen fest, ob <em>Prüf‑ &amp; Fehlerwerte</em>, <em>Personennamen</em> und <em>Kundendaten</em> gespeichert werden.</li>
+        <li>Wenn Cookies deaktiviert sind, funktionieren die Funktionen <em>Alles speichern</em> und die automatische Vorhaltung der Daten nicht.</li>
+      </ul>
+      <div class="danger">
+        <strong>Wichtig:</strong> Löschen Sie den Browser‑Cache oder die Cookies, sind alle lokal gespeicherten Daten weg. Es werden keine Links mit Inhalten verteilbar, da nichts serverseitig liegt.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>3. Kunden &amp; Personen erfassen</h2>
+
+      <h3>3.1 Reihenfolge</h3>
+      <p>
+        Eine <strong>Person (Prüfer)</strong> kann erst angelegt werden, nachdem ein <strong>Kunde</strong> angelegt wurde. Personen werden stets <em>innerhalb eines Kunden</em> geführt — es gibt keine globalen/losgelösten Prüfer‑Einträge.
+      </p>
+
+      <h3>3.2 Kundendaten</h3>
+      <p>
+        Beim Anlegen eines Kunden sollten Sie – sofern möglich – folgende Angaben vollständig ausfüllen: <strong>Kundenname, Kundennummer, Auftragsnummer</strong>.
+        Diese Felder sind zwar technisch optional (z. B. für schnelle Berechnungen), aber für valide Mehrwochen‑Zusammenrechnungen und eindeutige Reports unbedingt empfohlen.
+      </p>
+
+      <h3>3.3 Arbeitstage</h3>
+      <p>
+        Markieren Sie die Tage der betreffenden KW, an denen das Team beim Kunden gearbeitet hat. Diese Markierungen sorgen für korrekte Zuordnung in Wochen‑ und Mehrwochenberichten.
+      </p>
+
+      <h3>3.4 Prüfer/Teammitglieder</h3>
+      <ul>
+        <li>Nachdem ein Kunde angelegt ist, können mehrere Prüfer dem Kunden hinzugefügt werden.</li>
+        <li>Für jeden Prüfer müssen die durchgeführten Prüfungen (Stückzahl) und die nicht bestandenen Prüfungen erfasst werden.</li>
+        <li>Sollten zu viele oder falsche Einträge vorhanden sein, lassen sich Kunden oder Personen wieder löschen.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>4. Daten speichern</h2>
+      <p>
+        Der Button <strong>„Alles speichern“</strong> schreibt die aktuellen Eingaben in die lokalen Cookies Ihres Browsers. Dieser Schritt ist notwendig, damit die Daten beim nächsten Laden der App weiterhin verfügbar sind.
+      </p>
+      <p class="muted">Die Funktion nimmt nur dann Wirkung, wenn die Cookie‑Optionen aktiviert wurden.</p>
+
+      <div class="note">
+        <strong>Rechtlicher Hinweis (Kurzfassung):</strong> Die Anwendung speichert Daten ausschließlich lokal. Es werden keine personenbezogenen Daten an externe Server übermittelt. Bitte prüfen Sie gegebenenfalls Ihre internen Datenschutz‑/Betriebsvereinbarungen, bevor Sie personenbezogene Daten in Browser‑Cookies hinterlegen.
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>5. Report erstellen &amp; Ausgabe</h2>
+
+      <p>Das Tool unterstützt drei Arten von Reports:</p>
+      <h3>5.1. Zwischenbericht (kundenbezogen)</h3>
+      <ul>
+        <li>Kann direkt in der Maske eines Kunden erstellt werden.</li>
+        <li>Enthält:
+	  <ul>
+           <li>Kundendaten</li>
+           <li>Namen der Prüfer</li>
+           <li>Prüfstückzahlen und Fehlerquoten pro Prüfer</li>
+           <li>Wird als <strong>Reintext in die Zwischenablage kopiert</strong> und kann z. B. in E-Mails oder WhatsApp-Nachrichten eingefügt werden.</li>
+        </ul>
+      </li>
+
+      <ol>
+        <li><strong>Zwischenbericht (kundenbezogen)</strong> — kurzer Textbericht, der direkt beim Kunden ausgelöst wird und in die Zwischenablage kopiert wird. Ideal für schnelle Updates per E‑Mail oder Messenger.</li>
+        <li><strong>Multiwochenbericht (kundenbezogen)</strong> — summiert alle erfassten Wochen zu einem Auftrag; listet die Prüfungsergebnisse pro Person und KW auf; kann als Reintext kopiert oder als PDF ausgegeben werden.</li>
+        <li><strong>Wochenbericht (KW‑bezogen, Hauptbericht)</strong> — fasst alle Daten der ausgewählten KW zusammen (alle Kunden). Die Ausgabe erfolgt per Button: <em>Report kopieren</em> (kopiert Text in Zwischenablage) oder <em>Als PDF drucken</em> (druckt / erzeugt PDF über den Browser).</li>
+      </ul>
+
+      <h3>5.2. Multiwochenbericht (kundenbezogen)</h3>
+      <ul>
+	<li>Summiert alle erfassten Daten zu einem <strong>einzelnen Auftrag über mehrere Wochen.</strong></li>
+        <li>Enthält:
+      	  <ul>
+            <li>Alle Wochen- und Personendaten</li>
+            <li>Gesamtergebnisse der Prüfung</li>
+          </ul>
+        </li>
+        <li>Kann als <strong>Reintext kopiert</strong> oder als <strong>PDF exportiert</strong> werden.</li>
+        <li>Wird vor allem bei großen Projekten mit längerer Laufzeit benötigt.</li>
+      </ul>
+
+      <h3>5.3. Wochenbericht (Hauptbericht)</h3>
+      <ul>
+        <li>Erstellt eine <strong>komplette Übersicht der ausgewählten KW</strong> für alle Kunden und Teammitglieder.</li>
+        <li>Dient zur <strong>Meldung an den Disponenten</strong>, um die <strong>Bonusstufen</strong> zu bestimmen.</li>
+        <li>Alternativ kann der Bericht <strong>als PDF</strong> ausgegeben werden.</li>
+      </ul>
+
+      <h3>5.4 Muster: Zwischenbericht (Beispiel)</h3>
+      <div class="copy-area">
+        <textarea id="sampleReport">Zwischenreport
+Kalenderwoche: KW 40/2025
+
+Kunde: TUM
+Kundennummer: 12
+Auftragsnummer: 11
+Anwesenheitstage: Montag (29.9.2025), Dienstag (30.9.2025), Mittwoch (1.10.2025), Donnerstag (2.10.2025)
+
+Sebastian: Prüfungen: 780, Nicht bestanden: 0, Fehlerquote: 0.00 %
+
+Summe: Prüfungen: 780, Nicht bestanden: 0, Fehlerquote: 0.00 %
+</textarea>
+        <div style="min-width:120px;align-self:flex-start">
+          <button class="btn" onclick="copySample()">Zwischenbericht kopieren</button>
+          <p class="muted" style="font-size:12px;margin-top:8px">Klicken Sie, um den Text in die Zwischenablage zu kopieren.</p>
+        </div>
+      </div>
+
+      <script>
+        function copySample(){
+          const ta = document.getElementById('sampleReport');
+          ta.select();
+          try{navigator.clipboard.writeText(ta.value).then(()=>{alert('Zwischenbericht kopiert.');});}catch(e){document.execCommand('copy');alert('Zwischenbericht kopiert (Fallback).');}
+        }
+      </script>
+    </section>
+
+    <section class="card">
+      <h2>6. Hinweise &amp; Tipps</h2>
+      <ul>
+        <li><strong>Eindeutigkeit:</strong> Namen und Nummern müssen exakt gleich geschrieben sein. Kleinste Abweichungen führen zu falschen Zusammenrechnungen. Bei identischen Personennamen verwenden Sie einen Zusatz (z. B. "(2)", Initialen, oder Mitarbeiternummer).</li>
+        <li><strong>Vollständigkeit:</strong> Befüllen Sie Kundendaten vollständig für korrekte Mehrwochenberichte — auch wenn Felder optional markiert sind.</li>
+        <li><strong>Backups:</strong> Exportieren Sie regelmäßig fertige Berichte als PDF oder kopieren Sie den Reintext in Ihr internes Ticketing/Archiv.</li>
+        <li><strong>Cookies &amp; Dauer:</strong> Die Anwendung legt keine eigenen Verfallsdaten fest — die gespeicherten Cookies bleiben, bis sie durch Browser‑Einstellungen/Tools oder durch Nutzer gelöscht werden. Wenn Ihr Unternehmen Richtlinien zur Aufbewahrung personenbezogener Daten hat, beachten Sie diese.</li>
+        <li><strong>Browser:</strong> Nutzen Sie moderne Browser (Chrome, Edge, Firefox) für beste Kompatibilität mit Clipboard‑ und Druckfunktionen.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2>7. Anhang</h2>
+
+      <h3>7.1 Rechtlicher Cookie‑Hinweis</h3>
+      <pre>
+Die Anwendung speichert Nutzerdaten (Prüf‑ & Fehlerwerte, Namen, Kundendaten) lokal im Browser mithilfe von Cookies.
+Es erfolgt keine Übertragung an Dritte oder Speicherung auf externen Servern.
+Bitte beachten Sie Ihre internen Datenschutzvorgaben bevor Sie personenbezogene Daten in Browser‑Cookies speichern.
+      </pre>
+
+      <h3>7.2 FAQ</h3>
+      <table>
+        <tr><th>Frage</th><th>Antwort</th></tr>
+        <tr><td>Wer speichert meine Daten?</td><td>Nur Ihr Browser auf dem genutzten Gerät (Cookies).</td></tr>
+        <tr><td>Kann ich Links mit Berichten teilen?</td><td>Nein — es werden keine Inhalte serverseitig gespeichert. Teilen Sie PDF/Exportdateien oder kopierten Text.</td></tr>
+        <tr><td>Was, wenn zwei Prüfer gleich heißen?</td><td>Vergeben Sie eindeutige Zusätze (z. B. Initialen oder Nummern).</td></tr>
+      </table>
+
+    </section>
+
+    <footer>
+      <p>Erstellt für die Anwendung "Wochen Kurzbericht"</p>
+    </footer>
+  </div>
+</body>
+</html>
